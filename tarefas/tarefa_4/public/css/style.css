@@ -1,0 +1,30 @@
+body{
+  padding: 2em;
+  
+}
+
+.grid-item  {
+  width: 350px;
+  height: 280px;
+  background-color: aqua;
+  padding-left: 10px;
+}
+p, h1{
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+p:hover, h1:hover{
+  overflow: visible;
+  position:relative;
+}
+#pai{
+ display:contents; 
+}
+
+#grid-container{
+  gap: 25px;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: center;
+}

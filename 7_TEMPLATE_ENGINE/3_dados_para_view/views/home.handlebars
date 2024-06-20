@@ -1,0 +1,11 @@
+<h1>Olá handlebars</h1>
+<p>O nome do usuário é {{user.name}} e o sobrenome é {{user.surname}}</p>
+{{#if auth}}
+<p>
+  Você está autenticado, <a href="/dashboard">Clique aqui</a> para acessar a área de membros
+</p>
+{{else}}
+<p>
+  Você não está autenticado seu bronze
+</p>
+{{/if}}

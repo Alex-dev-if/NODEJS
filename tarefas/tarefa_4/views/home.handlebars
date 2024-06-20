@@ -1,0 +1,12 @@
+<h1>Página inicial</h1>
+<div id="grid-container">
+{{#each products}}
+  <div class="grid-item">
+    <h1>{{this.title}}</h1>
+    <p>Categoria: {{this.category}}</p>
+    <p>{{this.body}}</p>
+    <p>Avaliação: {{this.rating}}</p>
+    <a href="/products/{{this.id}}">Ver mais</a>
+  </div>
+{{/each}}
+</div>
