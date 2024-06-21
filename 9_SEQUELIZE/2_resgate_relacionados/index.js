@@ -56,9 +56,13 @@ app.post('/users/delete/:id', async (req, res)=>{
 app.get('/users/edit/:id', async (req, res)=>{
   const id = req.params.id
 
-  const user = await User.findOne({raw: true, where: {id: id}})
-
-  res.render('useredit', { user })
+  try {
+    const user = await User.findOne({ include: Address, where: {id: id}})
+    res.render('useredit', { user: user.get({plain: true}) })
+  } catch (error) {
+    console.log
+  }
+  
 })
 
 app.post('/users/update', async (req, res)=>{
@@ -96,14 +100,24 @@ app.post('/address/create', async (req, res)=>{
     number,
     city
   }
-
+  
   await Address.create(addressData)
 
   res.redirect(`../users/edit/${UserId}`)
-
 })
 
+app.post('/address/delete/:id', async (req, res)=>{
+  const id = req.params.id
+  const UserId = req.body.UserId
 
+  console.log(req.body)
+  
+  await Address.destroy({
+    where: {id: id}
+  })
+
+  res.redirect(`/users/edit/${UserId}`)
+})
 
 conn
   .sync()
