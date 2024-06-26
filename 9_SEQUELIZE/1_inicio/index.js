@@ -103,8 +103,6 @@ app.post('/address/create', async (req, res)=>{
 
 })
 
-
-
 conn
   .sync()
   // .sync({force: true})
